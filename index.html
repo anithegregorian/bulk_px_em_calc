@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pixels to EM/REM Bulk Converter and Calculator</title>
+	<meta name="description" content="A starter example with all elements and components used in Pico design system. Built with Pico CSS.">
+	<link rel="shortcut icon" href="https://picocss.com/favicon.ico">
+	<link rel="canonical" href="https://picocss.com/examples/preview/">
+
+	<!-- Pico.css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/picocss/1.5.0/pico.min.css" integrity="sha512-H5iGCGcmwcVcBQHyOkESTji2i7HlomeQq9k/uZQZqNJyrNylDEHi8udQ/To8QSFP8vlWho87HeRR25AY2Xxl7w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<script type="text/javascript">
+
+		function initStoreAndData() {
+			Alpine.store(
+				'settings',
+				{
+					base: 16,
+					grid_base: 4,
+					iterations: 10,
+					grids: [{p: '🙈', e: '🙉', r: '🙉'}]
+				}
+			);
+		}
+
+	</script>
+
+</head>
+
+<body>
+
+<main class="container" x-init="initStoreAndData()">
+
+	<section id="form">
+		<h2>Settings</h2>
+
+		<form onsubmit="return false;">
+
+			<div class="grid" style="align-items: center;">
+
+				<label>
+					Base Font Size (px):
+					<input
+					type="number"
+					name="base"
+					placeholder="Base font size (px)"
+					aria-label="Base font size"
+					x-model="$store.settings.base"
+					required="">
+				</label>
+
+				<label>
+					Grid Base (px):
+					<input
+					type="number"
+					name="grid_base"
+					placeholder="Grid base (px)"
+					aria-label="Grid base"
+					x-model="$store.settings.grid_base"
+					required="">
+				</label>
+
+				<label>
+					Iterations:
+					<input
+					type="number"
+					name="iterations"
+					placeholder="Iterations"
+					aria-label="Iterations"
+					x-model="$store.settings.iterations"
+					min="2"
+					max="500"
+					required="">
+				</label>
+
+				<button style="margin:10px 0 0 0" type="submit" @click="generateGrid()">Generate</button>
+			</div>
+
+		</form>
+
+	</section>
+
+	<section id="results">
+		<h5>Results</h5>
+
+		<hr>
+
+		<table role="grid">
+
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col"><a href="javascript:void(0)">Pixels</a></th>
+					<th scope="col"><a href="javascript:void(0)">EM's</a></th>
+					<th scope="col"><a href="javascript:void(0)">REM's</a></th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<template x-for="(grid, index) in $store.settings.grids">
+					<tr>
+						<th scope="row" x-text="index + 1"></th>
+						<td x-text="grid.p"></td>
+						<td x-text="grid.e"></td>
+						<td x-text="grid.r"></td>
+					</tr>
+				</template>
+
+			</tbody>
+
+		</table>
+
+	</section>
+
+	<section id="options">
+
+		<fieldset :disabled="$store.settings.grids.length < 2">
+
+			<legend><strong>Options</strong></legend>
+
+			<label for="rd_uc">
+				<input type="radio" id="rd_uc" name="radio_options" value="uc" checked>
+				Generate Utility Classes
+			</label>
+
+			<label for="rd_cv">
+				<input type="radio" id="rd_cv" name="radio_options" value="cv">
+				Generate CSS Variables
+			</label>
+
+			<label for="rd_uc_cv">
+				<input type="radio" id="rd_uc_cv" name="radio_options" value="uc_cv">
+				Generate Utility Classes and CSS Variables
+			</label>
+
+			<label for="rd_tw">
+				<input type="radio" id="rd_tw" name="radio_options" value="tw_config">
+				Generate TailwindCSS Config
+			</label>
+
+			<hr>
+
+			<button class="secondary">Generate</button>
+
+		</fieldset>
+
+	</section>
+
+	<footer>
+		<h4>&copy; Raven Developers<sup>&reg;</sup> 2022</h4>
+	</footer>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.9.5/cdn.min.js" integrity="sha512-1iCQtkVgrDML26orqlbXcO01YaRFpz5CEan+Y0Qhh6cQhcAlPPeJb9cbcNY7/YI7Sy+fIPxPGNuKiF8xjcw3Mg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="text/javascript">
+
+	document.addEventListener('DOMContentLoaded', () => {
+		//Alpine.start();
+	});
+
+	function generateGrid() {
+		const base = Math.abs(Alpine.store('settings').base);
+		const grid_base = Math.abs(Alpine.store('settings').grid_base);
+		const iterations = Math.abs(Alpine.store('settings').iterations);
+		let grids = [];
+
+		for (i = 1; i <= iterations; i++) {
+			const valPixels = grid_base * i;
+			const valEms = valPixels / base;
+			const valRems = valPixels / base;
+
+			grids.push({p: valPixels + 'px', e: valEms + 'em', r: valRems + 'rem'});
+		}
+
+		Alpine.store('settings').grids = grids;
+	}
+
+</script>
+
+</body>
+
+</html>
