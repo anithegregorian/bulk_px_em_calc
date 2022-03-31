@@ -1,0 +1,22 @@
+//
+// Package Name: style.scss
+// Subpackage: bulk_px_em_calc
+// Author: Raven Developers
+// Author URI: https://www.ravendevelopers.com
+// Description: SCSS
+// Author: anithegregorian
+// Created: 31/03/22
+// Version: 1.0
+// License: Creative Commons 3.0 Attribution
+// License URI: https://creativecommons.org/licenses/by/3.0/us/
+// Tags: app
+//
+
+.who-uses {
+	padding: 0;
+
+	> li {
+		display: inline-block;
+		margin-right: 16px;
+	}
+}

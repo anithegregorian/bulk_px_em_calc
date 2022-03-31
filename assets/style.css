@@ -1,0 +1,9 @@
+.who-uses {
+  padding: 0;
+}
+.who-uses > li {
+  display: inline-block;
+  margin-right: 16px;
+}
+
+/*# sourceMappingURL=style.css.map */

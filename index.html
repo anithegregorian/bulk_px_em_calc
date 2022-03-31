@@ -22,6 +22,8 @@
 	<!-- Pico.css -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/picocss/1.5.0/pico.min.css" integrity="sha512-H5iGCGcmwcVcBQHyOkESTji2i7HlomeQq9k/uZQZqNJyrNylDEHi8udQ/To8QSFP8vlWho87HeRR25AY2Xxl7w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+	<link rel="stylesheet" href="assets/style.css" />
+
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
 
@@ -39,7 +41,7 @@
 					base: 16,
 					grid_base: 4,
 					iterations: 10,
-					grids: [{p: '🙈', e: '🙉', r: '🙉'}]
+					grids: [{p: '🙈', e: '🙉', r: '🙊'}]
 				}
 			);
 		}
@@ -53,6 +55,28 @@
 <main class="container" x-init="initStoreAndData()">
 
 	<section id="form">
+		<h2>Introduction</h2>
+
+		<p>A utility to create 4/8px grid system for CSS and CSS frameworks. Most of you already know, but for those who don't, here's a list of who is using these grid systems and why:</p>
+
+		<ul class="who-uses">
+			<li>
+				<a
+					href="https://design.firefox.com/photon/visuals/grid.html"
+					target="_blank" rel="external nofollow">Mozilla</a>
+			</li>
+			<li>
+				<a
+				href="https://atlassian.design/foundations/grid"
+				target="_blank" rel="external nofollow">Atlassian</a>
+			</li>
+			<li>
+				<a
+				href="https://webflow.com/blog/why-were-using-a-4-point-grid-in-webflow"
+				target="_blank" rel="external nofollow">Webflow</a>
+			</li>
+		</ul>
+
 		<h2>Settings</h2>
 
 		<form onsubmit="return false;">
@@ -168,8 +192,9 @@
 
 	</section>
 
-	<footer>
-		<h6>&copy; <a href="https://ravendevelopers.com" rel="external" target="_blank">Raven Developers<sup>&reg;</sup></a> 2022</h6>
+	<footer style="text-align: center">
+		<h6>Copyrights &copy; <a href="https://ravendevelopers.com" rel="external" target="_blank">Raven Developers<sup>&reg;</sup></a> 2022</h6>
+		<p><small>Built with <a href="https://picocss.com/" rel="external nofollow" target="_blank">PicoCSS</a> and <a href="https://alpinejs.dev/" rel="external nofollow" target="_blank">AlpineJS</a></small></p>
 	</footer>
 
 </main>
