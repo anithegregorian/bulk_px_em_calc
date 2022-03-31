@@ -1,5 +1,6 @@
 .who-uses {
   padding: 0;
+  display: inline-block;
 }
 .who-uses > li {
   display: inline-block;
