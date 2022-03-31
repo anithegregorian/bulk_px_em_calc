@@ -7,28 +7,28 @@
 	<title>Pixels to EM/REM Bulk Converter and Calculator</title>
 	<meta name="description" content="Bulk convert pixels to elastic measurement or relative elastic measurement with grid base and iterations">
 
-	<link rel="canonical" href="https://anithegregorian.github.io/bulk_px_em_calc/" />
-	<meta property="og:locale" content="en_US" />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="Pixels to EM/REM Bulk Converter and Calculator" />
-	<meta property="og:description" content="Bulk convert pixels to elastic measurement or relative elastic measurement with grid base and iterations" />
-	<meta property="og:url" content="https://anithegregorian.github.io/bulk_px_em_calc/" />
-	<meta property="og:site_name" content="Pixels to EM/REM Bulk Converter and Calculator" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:site" content="@ravendevelopers" />
+	<link rel="canonical" href="https://anithegregorian.github.io/bulk_px_em_calc/"/>
+	<meta property="og:locale" content="en_US"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:title" content="Pixels to EM/REM Bulk Converter and Calculator"/>
+	<meta property="og:description" content="Bulk convert pixels to elastic measurement or relative elastic measurement with grid base and iterations"/>
+	<meta property="og:url" content="https://anithegregorian.github.io/bulk_px_em_calc/"/>
+	<meta property="og:site_name" content="Pixels to EM/REM Bulk Converter and Calculator"/>
+	<meta name="twitter:card" content="summary_large_image"/>
+	<meta name="twitter:site" content="@ravendevelopers"/>
 
 	<link rel="shortcut icon" href="assets/favicon.ico">
 
 	<!-- Pico.css -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/picocss/1.5.0/pico.min.css" integrity="sha512-H5iGCGcmwcVcBQHyOkESTji2i7HlomeQq9k/uZQZqNJyrNylDEHi8udQ/To8QSFP8vlWho87HeRR25AY2Xxl7w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/picocss/1.5.0/pico.min.css" integrity="sha512-H5iGCGcmwcVcBQHyOkESTji2i7HlomeQq9k/uZQZqNJyrNylDEHi8udQ/To8QSFP8vlWho87HeRR25AY2Xxl7w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-	<link rel="stylesheet" href="assets/style.css" />
+	<link rel="stylesheet" href="assets/style.css"/>
 
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
 
 		:root{
-			--font-family: "Red Hat Display", system-ui,-apple-system,"Segoe UI","Roboto","Ubuntu","Cantarell","Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
+			--font-family: "Red Hat Display", system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
 		}
 	</style>
 
@@ -67,7 +67,11 @@
 			target="_blank" rel="external nofollow">Atlassian</a>&nbsp;&nbsp;
 			<a
 			href="https://webflow.com/blog/why-were-using-a-4-point-grid-in-webflow"
-			target="_blank" rel="external nofollow">Webflow</a>
+			target="_blank" rel="external nofollow">Webflow</a><br/>
+		</p>
+
+		<p>
+			The three wise monkeys are more emphasizing. <strong>PX</strong> (see no evil, but might be), <strong>EM's</strong> (hear no evil, but might be), <strong>REM's</strong> (you'll rarely speak anything evil)
 		</p>
 
 		<h2>Settings</h2>
@@ -208,7 +212,7 @@
 		const iterations = Math.abs(Alpine.store('settings').iterations);
 		let grids = [];
 
-		for (i = 1; i <= iterations; i++) {
+		for (let i = 1; i <= iterations; i++) {
 			const valPixels = grid_base * i;
 			const valEms = valPixels / base;
 			const valRems = valPixels / base;
