@@ -1,3 +1,7 @@
+label {
+  cursor: pointer;
+}
+
 .who-uses {
   padding: 0;
   display: inline-block;
