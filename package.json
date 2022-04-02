@@ -1,0 +1,40 @@
+{
+  "name": "bulk_px_em_calc",
+  "version": "1.0.0",
+  "description": "Bulk Pixel to EM/REM converter",
+  "main": "assets/js/app.js",
+  "scripts": {
+    "build-css": "sass --style=compressed assets/style.scss:assets/style.css",
+    "build-js": "uglifyjs assets/js/app.js -cm -o assets/js/bundle.min.js",
+    "build-all": "sass --style=compressed assets/style.scss:assets/style.css; uglifyjs assets/js/app.js -cm -o assets/js/bundle.min.js",
+    "watch": "watch -p assets/style.scss -p assets/js/app.js -c \"npm run build-all\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://anithegregorian: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@github.com/anithegregorian/bulk_px_em_calc.git"
+  },
+  "keywords": [
+    "pixel",
+    "em",
+    "rem",
+    "bulk",
+    "converter",
+    "calculator",
+    "grid"
+  ],
+  "author": "Anirudh K. Mahant",
+  "license": "CC-BY-3.0",
+  "bugs": {
+    "url": "https://github.com/anithegregorian/bulk_px_em_calc/issues"
+  },
+  "homepage": "https://github.com/anithegregorian/bulk_px_em_calc#readme",
+  "dependencies": {
+    "watch-cli": "^0.2.3"
+  },
+  "browserslist": [
+    "last 1 chrome versions"
+  ],
+  "devDependencies": {
+    "uglifyjs": "^2.4.11"
+  }
+}

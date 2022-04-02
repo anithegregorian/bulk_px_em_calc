@@ -1,14 +1,1 @@
-label {
-  cursor: pointer;
-}
-
-.who-uses {
-  padding: 0;
-  display: inline-block;
-}
-.who-uses > li {
-  display: inline-block;
-  margin-right: 16px;
-}
-
-/*# sourceMappingURL=style.css.map */
+@import"https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap";:root{--font-family: "Red Hat Display", system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" }label{cursor:pointer}.who-uses{padding:0;display:inline-block}.who-uses>li{display:inline-block;margin-right:16px}/*# sourceMappingURL=style.css.map */

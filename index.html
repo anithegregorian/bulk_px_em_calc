@@ -24,14 +24,6 @@
 
 	<link rel="stylesheet" href="assets/style.css"/>
 
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-
-		:root{
-			--font-family: "Red Hat Display", system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
-		}
-	</style>
-
 	<script type="text/javascript">
 
 		function initStoreAndData() {
@@ -196,30 +188,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.9.5/cdn.min.js" integrity="sha512-1iCQtkVgrDML26orqlbXcO01YaRFpz5CEan+Y0Qhh6cQhcAlPPeJb9cbcNY7/YI7Sy+fIPxPGNuKiF8xjcw3Mg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script type="text/javascript">
-
-	document.addEventListener('DOMContentLoaded', () => {
-		//Alpine.start();
-	});
-
-	function generateGrid() {
-		const base = Math.abs(Alpine.store('settings').base);
-		const grid_base = Math.abs(Alpine.store('settings').grid_base);
-		const iterations = Math.abs(Alpine.store('settings').iterations);
-		let grids = [];
-
-		for (let i = 1; i <= iterations; i++) {
-			const valPixels = grid_base * i;
-			const valEms = valPixels / base;
-			const valRems = valPixels / base;
-
-			grids.push({p: valPixels + 'px', e: valEms + 'em', r: valRems + 'rem'});
-		}
-
-		Alpine.store('settings').grids = grids;
-	}
-
-</script>
+<script type="module" src="assets/js/bundle.min.js"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7E1DF8LR4P"></script>
