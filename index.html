@@ -22,7 +22,7 @@
 	<!-- Pico.css -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/picocss/1.5.0/pico.min.css" integrity="sha512-H5iGCGcmwcVcBQHyOkESTji2i7HlomeQq9k/uZQZqNJyrNylDEHi8udQ/To8QSFP8vlWho87HeRR25AY2Xxl7w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/base16/darcula.min.css" integrity="sha512-GfRggx2Wc+POEPR0asMTNTyNug3rWJ9Jp4wxnHZ5VApMOUJRK4cEaRriXsx5tV1DakKHQWQ2noCbuzFiPJaYqA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/base16/darcula.min.css" integrity="sha512-GfRggx2Wc+POEPR0asMTNTyNug3rWJ9Jp4wxnHZ5VApMOUJRK4cEaRriXsx5tV1DakKHQWQ2noCbuzFiPJaYqA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
 	<link rel="stylesheet" href="assets/style.css"/>
 
@@ -36,7 +36,8 @@
 					grid_base: 4,
 					iterations: 10,
 					grids: [{p: '🙈', e: '🙉', r: '🙊'}],
-					util_class_prefix: 'fz-'
+					util_class_prefix: 'fz-',
+					util_var_prefix: 'size-'
 				}
 			);
 		}
@@ -154,50 +155,51 @@
 
 				<div class="column">
 
-					<fieldset :disabled="$store.settings.grids.length < 2">
+					<legend><strong>Generate</strong></legend>
 
-						<legend><strong>Generate</strong></legend>
+					<label for="rd_uc">
+						<input type="radio" id="rd_uc" name="radio_options" value="uc" checked>
+						Generate Utility Classes
+					</label>
 
-						<label for="rd_uc">
-							<input type="radio" id="rd_uc" name="radio_options" value="uc" checked>
-							Generate Utility Classes
-						</label>
+					<label for="rd_cv">
+						<input type="radio" id="rd_cv" name="radio_options" value="cv">
+						Generate CSS Variables
+					</label>
 
-						<label for="rd_cv">
-							<input type="radio" id="rd_cv" name="radio_options" value="cv">
-							Generate CSS Variables
-						</label>
+					<label for="rd_uc_cv">
+						<input type="radio" id="rd_uc_cv" name="radio_options" value="uc_cv">
+						Generate Utility Classes and CSS Variables
+					</label>
 
-						<label for="rd_uc_cv">
-							<input type="radio" id="rd_uc_cv" name="radio_options" value="uc_cv">
-							Generate Utility Classes and CSS Variables
-						</label>
-
-						<label for="rd_tw">
-							<input type="radio" id="rd_tw" name="radio_options" value="tw_config">
-							Generate TailwindCSS Config
-						</label>
-
-					</fieldset>
+					<label for="rd_tw">
+						<input type="radio" id="rd_tw" name="radio_options" value="tw_config">
+						Generate TailwindCSS Config
+					</label>
 
 				</div>
 
 				<div class="column">
 
-					<legend><strong>Options</strong></legend>
-
-					<label for="inc_fz">
-						<input type="checkbox" id="inc_fz" name="check_fz" value="fz" checked>
-						Generate Font Size Classes
+					<label for="class_prefix">
+						<small>Class prefix</small>
+						<input type="text"
+									 placeholder="Class prefix"
+									 aria-label="Class prefix"
+									 x-model="$store.settings.util_class_prefix"
+									 id="class_prefix"
+									 title="Class prefix" required>
 					</label>
 
-					<input type="text"
-								 name="base"
-								 placeholder="Class prefix"
-								 aria-label="Class prefix"
-								 x-model="$store.settings.util_class_prefix"
-								 value="fz-"
-								 title="Class prefix" required>
+					<label for="var_prefix">
+						<small>Variable prefix</small>
+						<input type="text"
+									 placeholder="Variable prefix"
+									 aria-label="Variable prefix"
+									 x-model="$store.settings.util_var_prefix"
+									 id="var_prefix"
+									 title="Variable prefix" required>
+					</label>
 
 				</div>
 
