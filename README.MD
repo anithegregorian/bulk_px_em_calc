@@ -14,7 +14,7 @@ Because it has only one ultimate root parent `<html>` unlike `em` which scales n
 
 ### The 4px Grid System
 
-It's a reasonably robust grid system to control your design both aesthetically and visually on any device. They use the 4px grid system:
+It's a reasonably robust grid system to control your design both aesthetically and visually on any device. The 4px grid system is used by:
 
 - [Mozilla](https://design.firefox.com/photon/visuals/grid.html)
 - [Atlassian](https://atlassian.design/foundations/grid)

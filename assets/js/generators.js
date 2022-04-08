@@ -42,6 +42,17 @@ generateUtils = () => {
 			Raven.elements.util_code.classList.add('language-css');
 			break;
 
+		case 'bootstrap':
+			prefix = Alpine.store('settings').util_var_prefix;
+			template = '$spacers: (' + "\r\n";
+			for (let i = 0; i <= grids.length - 1; i++) {
+				const grid = grids[i];
+				template += "\t" + `${grid.p}: ${grid.r}rem,` + "\r\n";
+			}
+			template += ');';
+			Raven.elements.util_code.classList.add('language-scss');
+			break;
+
 		case 'tw_config':
 			template = 'module.exports = {' + "\r\n";
 			template += "\t" + 'theme: {' + "\r\n";
@@ -58,6 +69,6 @@ generateUtils = () => {
 	}
 
 	Raven.elements.util_code.innerText = template;
-	Raven.elements.util_code.style.display = 'inherit';
+	Raven.elements.code_wrapper.style.display = 'inherit';
 	hljs.highlightElement(Raven.elements.util_code);
 }

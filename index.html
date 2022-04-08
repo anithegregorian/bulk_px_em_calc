@@ -164,7 +164,7 @@
 							name="radio_options" value="class"
 							x-model="$store.settings.util_generate"
 							checked>
-						Generate Utility Classes
+						Utility Classes
 					</label>
 
 					<label for="rd_cv">
@@ -172,7 +172,7 @@
 							type="radio" id="rd_cv"
 							x-model="$store.settings.util_generate"
 							name="radio_options" value="vars">
-						Generate CSS Variables
+						CSS Variables
 					</label>
 
 					<label for="rd_tw">
@@ -180,7 +180,15 @@
 							type="radio" id="rd_tw"
 							x-model="$store.settings.util_generate"
 							name="radio_options" value="tw_config">
-						Generate TailwindCSS Config
+						TailwindCSS Spacing
+					</label>
+
+					<label for="rd_bs">
+						<input
+							type="radio" id="rd_bs"
+							x-model="$store.settings.util_generate"
+							name="radio_options" value="bootstrap">
+						Bootstrap 5 Spacing
 					</label>
 
 				</div>
@@ -213,18 +221,29 @@
 
 			<hr>
 
-			<button class="secondary" onclick="generateUtils()">Generate</button>
+			<button
+				class="secondary"
+				onclick="generateUtils()"
+				:disabled="$store.settings.util_generate === null">Generate</button>
 
 		</fieldset>
 
-		<code id="util-code" class="generated-code"></code>
+		<div id="code-wrapper">
+			<mark id="copied">Wooo hooo! copied roger, roger!</mark>
+			<a href="javascript:void(0)" id="btn-copy" data-clipboard-target="#util-code">
+				<svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H10c-1.103 0-2 .897-2 2v4H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2v-4h4c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM4 20V10h10l.002 10H4zm16-6h-4v-4c0-1.103-.897-2-2-2h-4V4h10v10z"/></svg>
+				Copy
+			</a>
+
+			<code id="util-code" class="generated-code"></code>
+		</div>
 
 	</section>
 
 	<footer style="text-align: center">
 		<p>
-			Copyrights &copy; <a href="https://ravendevelopers.com" rel="external" target="_blank">Raven Developers<sup>&reg;</sup></a> 2022<br/>
-			<small>Built with <a href="https://picocss.com/" rel="external nofollow" target="_blank">PicoCSS</a> and <a href="https://alpinejs.dev/" rel="external nofollow" target="_blank">AlpineJS</a></small>
+			Copyrights &copy; <a href="https://ravendevelopers.com" rel="external" target="_blank">Raven Developers<sup>&reg;</sup></a> 2022<br/><br/>
+			<small>Built with ❤️ on <a href="https://alpinejs.dev/" rel="external nofollow" target="_blank">AlpineJS</a> and <a href="https://picocss.com/" rel="external nofollow" target="_blank">PicoCSS</a></small>
 		</p>
 	</footer>
 
@@ -241,6 +260,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/languages/javascript.min.js" integrity="sha512-I9gpHTedDJcVkfGpzBuyrSHeNIsI9ShXYUMxA4X1Yp3JSoPqRuhdJMnd+2zbPCwACbBjcigjjdokhxv7TBXQVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/languages/json.min.js" integrity="sha512-CYNXYs/v5lf987Bm4mWE+5ZnOdxNoKqBrro4AtHg012BQDFj7b1V3YQyAPhYF/jGcxqkPpudoe8dCkkdmAH+cQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js" integrity="sha512-PIisRT8mFfdxx99gMs7WAY5Gp+CtjYYxKvF93w8yWAvX548UBNADHu7Qkavgr6yRG+asocqfuk5crjNd5z9s6Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="assets/js/bundle.min.js"></script>
 

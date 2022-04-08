@@ -16,14 +16,25 @@
 	'use strict';
 
 	Raven.elements = {
-		util_code: document.getElementById('util-code')
+		util_code: document.getElementById('util-code'),
+		code_wrapper: document.getElementById('code-wrapper'),
+		code_copy: document.getElementById('btn-copy')
 	};
 
 })(window.Raven = window.Raven || {});
 
-// document.addEventListener('DOMContentLoaded', () => {
-// 	//Alpine.start();
-// });
+document.addEventListener('DOMContentLoaded', () => {
+
+	let clipboard = new ClipboardJS('#btn-copy');
+
+	clipboard.on('success', function (e) {
+		console.info('Action:', e.action);
+		console.info('Text:', e.text);
+		console.info('Trigger:', e.trigger);
+		e.clearSelection();
+	});
+
+});
 
 function generateGrid() {
 	const base = Math.abs(Alpine.store('settings').base);
