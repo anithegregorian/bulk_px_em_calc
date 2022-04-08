@@ -25,12 +25,14 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-	let clipboard = new ClipboardJS('#btn-copy');
+	const clipboard = new ClipboardJS('#btn-copy');
+	const copied = document.getElementById('copied');
 
 	clipboard.on('success', function (e) {
-		console.info('Action:', e.action);
-		console.info('Text:', e.text);
-		console.info('Trigger:', e.trigger);
+		// console.info('Action:', e.action);
+		// console.info('Text:', e.text);
+		// console.info('Trigger:', e.trigger);
+		copied.classList.add('really');
 		e.clearSelection();
 	});
 
