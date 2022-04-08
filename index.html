@@ -108,7 +108,7 @@
 					required="">
 				</label>
 
-				<button style="margin:10px 0 0 0" type="submit" @click="generateGrid()">Generate</button>
+				<button style="margin-top:10px" type="submit" @click="generateGrid()">Generate</button>
 			</div>
 
 		</form>
@@ -152,11 +152,11 @@
 
 		<fieldset :disabled="$store.settings.grids.length < 2">
 
+			<legend><strong>Generate</strong></legend>
+
 			<div class="grid">
 
 				<div class="column">
-
-					<legend><strong>Generate</strong></legend>
 
 					<label for="rd_uc">
 						<input

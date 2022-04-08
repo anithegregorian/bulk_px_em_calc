@@ -31,14 +31,26 @@ generateUtils = () => {
 	const grids = Alpine.store('settings').grids;
 	const what = Alpine.store('settings').util_generate;
 	let template = '';
+	let prefix = '';
 
 	switch (what){
 		case 'class':
-			const prefix = Alpine.store('settings').util_class_prefix;
+			prefix = Alpine.store('settings').util_class_prefix;
 			for (let i = 0; i <= grids.length - 1; i++) {
 				const grid = grids[i];
 				template += `.${prefix}${grid.p} { ${grid.r}rem }` + "\r\n\n";
 			}
+			Raven.elements.util_code.classList.add('language-css');
+			break;
+
+		case 'vars':
+			prefix = Alpine.store('settings').util_var_prefix;
+			template = ':root {' + "\r\n";
+			for (let i = 0; i <= grids.length - 1; i++) {
+				const grid = grids[i];
+				template += "\t" + `--${prefix}${grid.p}: ${grid.r}rem;` + "\r\n";
+			}
+			template += '}';
 			Raven.elements.util_code.classList.add('language-css');
 			break;
 	}
