@@ -16,7 +16,7 @@
 	'use strict';
 
 	Raven.elements = {
-		util_class: document.getElementById('util-class')
+		util_code: document.getElementById('util-code')
 	};
 
 })(window.Raven = window.Raven || {});

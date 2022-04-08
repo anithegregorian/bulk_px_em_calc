@@ -36,6 +36,7 @@
 					grid_base: 4,
 					iterations: 10,
 					grids: [{p: '🙈', e: '🙉', r: '🙊'}],
+					util_generate: null,
 					util_class_prefix: 'fz-',
 					util_var_prefix: 'size-'
 				}
@@ -158,22 +159,35 @@
 					<legend><strong>Generate</strong></legend>
 
 					<label for="rd_uc">
-						<input type="radio" id="rd_uc" name="radio_options" value="uc" checked>
+						<input
+							type="radio" id="rd_uc"
+							name="radio_options" value="class"
+							x-model="$store.settings.util_generate"
+							checked>
 						Generate Utility Classes
 					</label>
 
 					<label for="rd_cv">
-						<input type="radio" id="rd_cv" name="radio_options" value="cv">
+						<input
+							type="radio" id="rd_cv"
+							x-model="$store.settings.util_generate"
+							name="radio_options" value="vars">
 						Generate CSS Variables
 					</label>
 
 					<label for="rd_uc_cv">
-						<input type="radio" id="rd_uc_cv" name="radio_options" value="uc_cv">
+						<input
+							type="radio" id="rd_uc_cv"
+							x-model="$store.settings.util_generate"
+							name="radio_options" value="class_vars">
 						Generate Utility Classes and CSS Variables
 					</label>
 
 					<label for="rd_tw">
-						<input type="radio" id="rd_tw" name="radio_options" value="tw_config">
+						<input
+							type="radio" id="rd_tw"
+							x-model="$store.settings.util_generate"
+							name="radio_options" value="tw_config">
 						Generate TailwindCSS Config
 					</label>
 
@@ -207,11 +221,11 @@
 
 			<hr>
 
-			<button class="secondary" onclick="generateUtilClasses()">Generate</button>
+			<button class="secondary" onclick="generateUtils()">Generate</button>
 
 		</fieldset>
 
-		<code id="util-class" class="language-css generated-code"></code>
+		<code id="util-code" class="generated-code"></code>
 
 	</section>
 
