@@ -53,6 +53,9 @@ generateUtils = () => {
 			template += '}';
 			Raven.elements.util_code.classList.add('language-css');
 			break;
+
+		case 'tw_config':
+			break;
 	}
 
 	Raven.elements.util_code.innerText = template;
