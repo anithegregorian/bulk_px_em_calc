@@ -33,6 +33,9 @@ generateUtils = () => {
 	let template = '';
 	let prefix = '';
 
+	Raven.elements.util_code.classList.remove('language-css');
+	Raven.elements.util_code.classList.remove('language-json');
+
 	switch (what){
 		case 'class':
 			prefix = Alpine.store('settings').util_class_prefix;
@@ -55,6 +58,17 @@ generateUtils = () => {
 			break;
 
 		case 'tw_config':
+			template = 'module.exports = {' + "\r\n";
+			template += "\t" + 'theme: {' + "\r\n";
+			template += "\t\t" + 'spacing: {' + "\r\n";
+			for (let i = 0; i <= grids.length - 1; i++) {
+				const grid = grids[i];
+				template += "\t\t\t" + `${grid.p}: '${grid.r * 4}rem',` + "\r\n";
+			}
+			template += "\t\t" + '}' + "\r\n";
+			template += "\t" + '}' + "\r\n";
+			template += '}';
+			Raven.elements.util_code.classList.add('language-json');
 			break;
 	}
 
