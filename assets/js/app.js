@@ -12,9 +12,18 @@
  *  Tags: js
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-	//Alpine.start();
-});
+(function (Raven, undefined) {
+	'use strict';
+
+	Raven.elements = {
+		util_class: document.getElementById('util-class')
+	};
+
+})(window.Raven = window.Raven || {});
+
+// document.addEventListener('DOMContentLoaded', () => {
+// 	//Alpine.start();
+// });
 
 function generateGrid() {
 	const base = Math.abs(Alpine.store('settings').base);
@@ -27,7 +36,7 @@ function generateGrid() {
 		const valEms = valPixels / base;
 		const valRems = valPixels / base;
 
-		grids.push({p: valPixels + 'px', e: valEms + 'em', r: valRems + 'rem'});
+		grids.push({p: valPixels, e: valEms, r: valRems});
 	}
 
 	Alpine.store('settings').grids = grids;

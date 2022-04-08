@@ -5,9 +5,9 @@
   "main": "assets/js/app.js",
   "scripts": {
     "build-css": "sass --style=compressed assets/style.scss:assets/style.css",
-    "build-js": "uglifyjs assets/js/app.js -cm -o assets/js/bundle.min.js",
-    "build-all": "sass --style=compressed assets/style.scss:assets/style.css; uglifyjs assets/js/app.js -cm -o assets/js/bundle.min.js",
-    "watch": "watch -p assets/style.scss -p assets/js/app.js -c \"npm run build-all\""
+    "build-js": "uglifyjs assets/js/app.js assets/js/generators.js -cm -o assets/js/bundle.min.js",
+    "build-all": "sass --style=compressed assets/style.scss:assets/style.css; uglifyjs assets/js/app.js assets/js/generators.js -cm -o assets/js/bundle.min.js",
+    "watch": "watch -p assets/style.scss -p assets/js/app.js -p assets/js/generators.js -c \"npm run build-all\""
   },
   "repository": {
     "type": "git",

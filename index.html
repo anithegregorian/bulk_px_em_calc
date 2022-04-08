@@ -22,6 +22,8 @@
 	<!-- Pico.css -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/picocss/1.5.0/pico.min.css" integrity="sha512-H5iGCGcmwcVcBQHyOkESTji2i7HlomeQq9k/uZQZqNJyrNylDEHi8udQ/To8QSFP8vlWho87HeRR25AY2Xxl7w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/base16/darcula.min.css" integrity="sha512-GfRggx2Wc+POEPR0asMTNTyNug3rWJ9Jp4wxnHZ5VApMOUJRK4cEaRriXsx5tV1DakKHQWQ2noCbuzFiPJaYqA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 	<link rel="stylesheet" href="assets/style.css"/>
 
 	<script type="text/javascript">
@@ -33,7 +35,8 @@
 					base: 16,
 					grid_base: 4,
 					iterations: 10,
-					grids: [{p: '🙈', e: '🙉', r: '🙊'}]
+					grids: [{p: '🙈', e: '🙉', r: '🙊'}],
+					util_class_prefix: 'fz-'
 				}
 			);
 		}
@@ -131,9 +134,9 @@
 				<template x-for="(grid, index) in $store.settings.grids">
 					<tr>
 						<th scope="row" x-text="index + 1"></th>
-						<td x-text="grid.p"></td>
-						<td x-text="grid.e"></td>
-						<td x-text="grid.r"></td>
+						<td x-text="grid.p + 'px'"></td>
+						<td x-text="grid.e + 'em'"></td>
+						<td x-text="grid.r + 'rem'"></td>
 					</tr>
 				</template>
 
@@ -147,33 +150,66 @@
 
 		<fieldset :disabled="$store.settings.grids.length < 2">
 
-			<legend><strong>Options</strong></legend>
+			<div class="grid">
 
-			<label for="rd_uc">
-				<input type="radio" id="rd_uc" name="radio_options" value="uc" checked>
-				Generate Utility Classes
-			</label>
+				<div class="column">
 
-			<label for="rd_cv">
-				<input type="radio" id="rd_cv" name="radio_options" value="cv">
-				Generate CSS Variables
-			</label>
+					<fieldset :disabled="$store.settings.grids.length < 2">
 
-			<label for="rd_uc_cv">
-				<input type="radio" id="rd_uc_cv" name="radio_options" value="uc_cv">
-				Generate Utility Classes and CSS Variables
-			</label>
+						<legend><strong>Generate</strong></legend>
 
-			<label for="rd_tw">
-				<input type="radio" id="rd_tw" name="radio_options" value="tw_config">
-				Generate TailwindCSS Config
-			</label>
+						<label for="rd_uc">
+							<input type="radio" id="rd_uc" name="radio_options" value="uc" checked>
+							Generate Utility Classes
+						</label>
+
+						<label for="rd_cv">
+							<input type="radio" id="rd_cv" name="radio_options" value="cv">
+							Generate CSS Variables
+						</label>
+
+						<label for="rd_uc_cv">
+							<input type="radio" id="rd_uc_cv" name="radio_options" value="uc_cv">
+							Generate Utility Classes and CSS Variables
+						</label>
+
+						<label for="rd_tw">
+							<input type="radio" id="rd_tw" name="radio_options" value="tw_config">
+							Generate TailwindCSS Config
+						</label>
+
+					</fieldset>
+
+				</div>
+
+				<div class="column">
+
+					<legend><strong>Options</strong></legend>
+
+					<label for="inc_fz">
+						<input type="checkbox" id="inc_fz" name="check_fz" value="fz" checked>
+						Generate Font Size Classes
+					</label>
+
+					<input type="text"
+								 name="base"
+								 placeholder="Class prefix"
+								 aria-label="Class prefix"
+								 x-model="$store.settings.util_class_prefix"
+								 value="fz-"
+								 title="Class prefix" required>
+
+				</div>
+
+			</div>
 
 			<hr>
 
-			<button class="secondary">Generate</button>
+			<button class="secondary" onclick="generateUtilClasses()">Generate</button>
 
 		</fieldset>
+
+		<code id="util-class" class="language-css generated-code"></code>
 
 	</section>
 
@@ -188,13 +224,41 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.9.5/cdn.min.js" integrity="sha512-1iCQtkVgrDML26orqlbXcO01YaRFpz5CEan+Y0Qhh6cQhcAlPPeJb9cbcNY7/YI7Sy+fIPxPGNuKiF8xjcw3Mg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js" integrity="sha512-BNc7saQYlxCL10lykUYhFBcnzdKMnjx5fp5s5wPucDyZ7rKNwCoqJh1GwEAIhuePEK4WM9askJBRsu7ma0Rzvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/languages/css.min.js" integrity="sha512-SD06mVimKXJwNGnT3eDxfzVCOKsRXV7/IKSEhB3XmjJ7eN0saLzrW/As/9QmqljUJxa/+il3DWJz7cR7VupJDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/languages/scss.min.js" integrity="sha512-zDTjSLxQD7lQfrbGR7S+8SOG5bRu/amGCaS4CYT972nKA36uLQ/Xi/amA7OWyEMFVa7VC3VZm5h2m2TOOVEZAA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/languages/javascript.min.js" integrity="sha512-I9gpHTedDJcVkfGpzBuyrSHeNIsI9ShXYUMxA4X1Yp3JSoPqRuhdJMnd+2zbPCwACbBjcigjjdokhxv7TBXQVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/languages/json.min.js" integrity="sha512-CYNXYs/v5lf987Bm4mWE+5ZnOdxNoKqBrro4AtHg012BQDFj7b1V3YQyAPhYF/jGcxqkPpudoe8dCkkdmAH+cQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script src="assets/js/bundle.min.js"></script>
+
+<script type="text/javascript">
+	const brPlugin = {
+		"before:highlightBlock": ({block}) => {
+			block.innerHTML = block.innerHTML.replace(/\n/g, '').replace(/<br[ /]*>/g, '\n');
+		},
+		"after:highlightBlock": ({result}) => {
+			result.value = result.value.replace(/\n/g, "<br>");
+		}
+	};
+
+	// how to use it
+	hljs.addPlugin(brPlugin);
+</script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7E1DF8LR4P"></script>
 <script>
 	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
+
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+
 	gtag('js', new Date());
 	gtag('config', 'G-7E1DF8LR4P');
 </script>
