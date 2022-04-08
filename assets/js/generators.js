@@ -12,21 +12,6 @@
  *  Tags: js
  */
 
-// generateUtilClasses = () => {
-// 	const grids = Alpine.store('settings').grids;
-// 	const prefix = Alpine.store('settings').util_class_prefix;
-// 	let template = '';
-//
-// 	for (let i = 0; i <= grids.length - 1; i++) {
-// 		const grid = grids[i];
-// 		template += `.${prefix}${grid.p} { ${grid.r}rem }` + "\r\n\n";
-// 	}
-//
-// 	Raven.elements.util_code.innerText = template;
-// 	Raven.elements.util_code.style.display = 'inherit';
-// 	hljs.highlightElement(Raven.elements.util_code);
-// }
-
 generateUtils = () => {
 	const grids = Alpine.store('settings').grids;
 	const what = Alpine.store('settings').util_generate;
