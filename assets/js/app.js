@@ -29,12 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	const copied = document.getElementById('copied');
 
 	clipboard.on('success', function (e) {
-		// console.info('Action:', e.action);
-		// console.info('Text:', e.text);
-		// console.info('Trigger:', e.trigger);
 		copied.classList.add('really');
 		e.clearSelection();
 	});
+
+	copied.onanimationend = () => {
+		copied.classList.remove('really');
+	};
 
 });
 
