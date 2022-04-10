@@ -17,6 +17,7 @@ generateUtils = () => {
 	const what = Alpine.store('settings').util_generate;
 	let template = '';
 	let prefix = '';
+	let property = '';
 
 	Raven.elements.util_code.classList.remove('language-css');
 	Raven.elements.util_code.classList.remove('language-json');
@@ -24,9 +25,11 @@ generateUtils = () => {
 	switch (what){
 		case 'class':
 			prefix = Alpine.store('settings').util_class_prefix;
+			property = Alpine.store('settings').util_css_property;
+
 			for (let i = 0; i <= grids.length - 1; i++) {
 				const grid = grids[i];
-				template += `.${prefix}${grid.p} { ${grid.r}rem }` + "\r\n\n";
+				template += `.${prefix}${grid.p} { ${property}: ${grid.r}rem }` + "\r\n\n";
 			}
 			Raven.elements.util_code.classList.add('language-css');
 			break;

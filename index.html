@@ -38,7 +38,8 @@
 					grids: [{p: '🙈', e: '🙉', r: '🙊'}],
 					util_generate: null,
 					util_class_prefix: 'fz-',
-					util_var_prefix: 'size-'
+					util_css_property: 'font-size',
+					util_var_prefix: 'size-',
 				}
 			);
 		}
@@ -195,15 +196,33 @@
 
 				<div class="column">
 
-					<label for="class_prefix">
-						<small>Class prefix</small>
-						<input type="text"
-									 placeholder="Class prefix"
-									 aria-label="Class prefix"
-									 x-model="$store.settings.util_class_prefix"
-									 id="class_prefix"
-									 title="Class prefix" required>
-					</label>
+					<div class="grid">
+
+						<div class="column">
+							<label for="class_prefix">
+								<small>Class prefix</small>
+								<input type="text"
+											 placeholder="Class prefix"
+											 aria-label="Class prefix"
+											 x-model="$store.settings.util_class_prefix"
+											 id="class_prefix"
+											 title="Class prefix" required>
+							</label>
+						</div>
+
+						<div class="column">
+							<label for="class_property">
+								<small>CSS property</small>
+								<input type="text"
+											 placeholder="CSS property"
+											 aria-label="CSS property"
+											 x-model="$store.settings.util_css_property"
+											 id="class_property"
+											 title="CSS property" required>
+							</label>
+						</div>
+
+					</div>
 
 					<label for="var_prefix">
 						<small>Variable prefix</small>
