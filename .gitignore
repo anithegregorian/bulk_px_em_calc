@@ -994,8 +994,6 @@ wp-content/wp-cache-config.php
 /.htaccess
 /license.txt
 /readme.html
-/sitemap.xml
-/sitemap.xml.gz
 
 # CMake
 cmake-build-debug/
