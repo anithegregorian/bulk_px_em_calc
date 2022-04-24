@@ -16,13 +16,14 @@ generateUtils = () => {
 	const grids = Alpine.store('settings').grids;
 	const what = Alpine.store('settings').util_generate;
 	let template = '';
+	let font_template = '';
 	let prefix = '';
 	let property = '';
 
 	Raven.elements.util_code.classList.remove('language-css');
 	Raven.elements.util_code.classList.remove('language-json');
 
-	switch (what){
+	switch (what) {
 		case 'class':
 			prefix = Alpine.store('settings').util_class_prefix;
 			property = Alpine.store('settings').util_css_property;
@@ -60,11 +61,15 @@ generateUtils = () => {
 			template = 'module.exports = {' + "\r\n";
 			template += "\t" + 'theme: {' + "\r\n";
 			template += "\t\t" + 'spacing: {' + "\r\n";
+			font_template = "\t\t" + 'fontSize: {' + "\r\n";
 			for (let i = 0; i <= grids.length - 1; i++) {
 				const grid = grids[i];
-				template += "\t\t\t" + `${grid.p}: '${grid.r * 4}rem',` + "\r\n";
+				template += "\t\t\t" + `${i + 1}: '${grid.r}rem',` + "\r\n";
+				font_template += "\t\t\t" + `${i + 1}: '${grid.r}rem',` + "\r\n";
 			}
-			template += "\t\t" + '}' + "\r\n";
+			template += "\t\t" + '},' + "\r\n";
+			font_template += "\t\t" + '}' + "\r\n";
+			template = template + font_template;
 			template += "\t" + '}' + "\r\n";
 			template += '}';
 			Raven.elements.util_code.classList.add('language-json');
